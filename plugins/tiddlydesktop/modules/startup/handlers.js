@@ -51,6 +51,14 @@ exports.startup = function() {
 		$tw.desktop.windowList.revealByUrl(event.param);
 		return false;
 	});
+	$tw.rootWidget.addEventListener("tiddlydesktop-clone-wiki",function(event) {
+		var source = event.param,
+			dest = event.files && event.files[0].path;
+		if(source && dest) {
+			$tw.desktop.windowList.cloneToPath(source,dest);
+		}
+		return false;
+	});
 	$tw.rootWidget.addEventListener("tiddlydesktop-flags",function(event) {
 		$tw.desktop.gui.Window.open("chrome://flags",{
 			id: "chrome://flags"
@@ -58,5 +66,4 @@ exports.startup = function() {
 		return false;
 	});
 };
-
 })();

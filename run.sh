@@ -1,15 +1,7 @@
 #!/bin/bash
 
-# build TiddlyWiki and TiddlyDesktop
+# build and run TiddlyDesktop
 
+./bld.sh || exit 1
 
-pushd ../TiddlyWiki5
-
-../build.jermolene.github.io/quick-bld.sh
-
-popd
-
-./bld.sh
-
-./output/mac64/TiddlyDesktop-mac64-v0.0.13/TiddlyWiki.app/Contents/MacOS/nwjs
-
+./output/mac64/TiddlyDesktop-mac64-v$(./bin/get-version-number)/TiddlyDesktop.app/Contents/MacOS/nwjs --debug || exit 1

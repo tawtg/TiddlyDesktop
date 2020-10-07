@@ -53,6 +53,14 @@ BackstageWindow.prototype.onloaded = function(event) {
 	this.window_nwjs.window.$tw = $tw;
 	// Show dev tools
 	// this.window_nwjs.showDevTools();
+	// Trap links
+	$tw.desktop.utils.links.trapLinks(this.window_nwjs.window.document);
+	// Handle popups
+	$tw.utils.addEventListeners(this.window_nwjs.window.document,[{
+		name: "click",
+		handlerObject: $tw.popup,
+		handlerMethod: "handleEvent"
+	}]);
 	// Show dev tools on F12
 	$tw.desktop.utils.devtools.trapDevTools(this.window_nwjs,this.window_nwjs.window.document);
 	// Add menu
